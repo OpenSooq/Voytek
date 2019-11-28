@@ -54,4 +54,14 @@ class ColorsCollectionViewDelegate: NSObject, UICollectionViewDataSource, UIColl
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        if let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout {
+            let totalCellWidth = flowLayout.itemSize.width * CGFloat(colors.count)
+            let totalSpacingWidth = 0 * CGFloat(colors.count - 1)
+            let leftInset = (collectionView.frame.width - CGFloat(totalCellWidth + totalSpacingWidth)) / 2
+            let rightInset = leftInset
+            return UIEdgeInsets(top: 0, left: leftInset, bottom: 0, right: rightInset)
+        }
+        return .zero
+    }
 }
