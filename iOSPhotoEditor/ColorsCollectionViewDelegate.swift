@@ -60,6 +60,9 @@ class ColorsCollectionViewDelegate: NSObject, UICollectionViewDataSource, UIColl
             let totalSpacingWidth = 0 * CGFloat(colors.count - 1)
             let leftInset = (collectionView.frame.width - CGFloat(totalCellWidth + totalSpacingWidth)) / 2
             let rightInset = leftInset
+            if leftInset <= 0 {
+                return .zero
+            }
             return UIEdgeInsets(top: 0, left: leftInset, bottom: 0, right: rightInset)
         }
         return .zero
