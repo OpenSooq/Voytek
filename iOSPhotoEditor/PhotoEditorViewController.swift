@@ -38,6 +38,7 @@ public final class PhotoEditorViewController: UIViewController {
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var clearButton: UIButton!
+    @IBOutlet weak var continueButton: UIButton!
     
     public var image: UIImage?
     /**
@@ -86,6 +87,10 @@ public final class PhotoEditorViewController: UIViewController {
         deleteView.layer.borderWidth = 2.0
         deleteView.layer.borderColor = UIColor.white.cgColor
         deleteView.clipsToBounds = true
+        
+        if UIApplication.shared.userInterfaceLayoutDirection == .rightToLeft {
+            continueButton.transform = CGAffineTransform(scaleX: -1, y: 1)
+        }
         
         let edgePan = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(screenEdgeSwiped))
         edgePan.edges = .bottom

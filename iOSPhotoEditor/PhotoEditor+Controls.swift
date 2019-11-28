@@ -34,6 +34,7 @@ extension PhotoEditorViewController {
         controller.delegate = self
         controller.image = image
         let navController = UINavigationController(rootViewController: controller)
+        navController.modalPresentationStyle = .fullScreen
         present(navController, animated: true, completion: nil)
     }
 
@@ -102,8 +103,7 @@ extension PhotoEditorViewController {
     
     @IBAction func continueButtonPressed(_ sender: Any) {
         let img = self.canvasView.toImage()
-        photoEditorDelegate?.doneEditing(image: img)
-        self.dismiss(animated: true, completion: nil)
+        photoEditorDelegate?.doneEditing(self, image: img)
     }
 
     //MAKR: helper methods
@@ -131,7 +131,7 @@ extension PhotoEditorViewController {
             case .sticker:
                 stickerButton.isHidden = true
             case .text:
-                stickerButton.isHidden = true
+                textButton.isHidden = true
             }
         }
     }
