@@ -83,18 +83,43 @@ open class CropViewController: UIViewController {
 
     open override func viewDidLoad() {
         super.viewDidLoad()
-
+        UIApplication.shared.statusBarStyle = .lightContent
         navigationController?.navigationBar.isTranslucent = false
-        navigationController?.toolbar.isTranslucent = false
+        navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.barTintColor = .black
+        navigationController?.navigationBar.backgroundColor = .black
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.titleTextAttributes = [ .foregroundColor: UIColor.white]
+        if #available(iOS 13.0, *) {
+            navigationController?.navigationBar.prefersLargeTitles = false
+            let navbarAppearance = UINavigationBarAppearance()
+            navbarAppearance.configureWithOpaqueBackground()
+            navbarAppearance.backgroundColor = .black
+            navbarAppearance.shadowImage = nil
+            navbarAppearance.shadowColor = nil
+            var attrs = [NSAttributedString.Key: Any]()
+            attrs[NSAttributedString.Key.foregroundColor] = UIColor.white
+            navbarAppearance.titleTextAttributes = attrs
+            navigationController?.navigationBar.standardAppearance = navbarAppearance
+            navigationController?.navigationBar.scrollEdgeAppearance = navbarAppearance
+            navigationController?.navigationBar.compactAppearance = navbarAppearance
+        }
+               
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(CropViewController.cancel(_:)))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(CropViewController.done(_:)))
+        
+        navigationItem.leftBarButtonItem?.setTitleTextAttributes([ .foregroundColor: UIColor.white], for: .normal)
+        navigationItem.rightBarButtonItem?.setTitleTextAttributes([ .foregroundColor: UIColor.white], for: .normal)
         
         if self.toolbarItems == nil {
             let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
             let constrainButton = UIBarButtonItem(title: "Constrain", style: .plain, target: self, action: #selector(CropViewController.constrain(_:)))
+            constrainButton.setTitleTextAttributes([ .foregroundColor: UIColor.white], for: .normal)
+            constrainButton.setTitleTextAttributes([ .foregroundColor: UIColor.white], for: .normal)
             toolbarItems = [flexibleSpace, constrainButton, flexibleSpace]
         }
-        
+        navigationController?.toolbar?.isTranslucent = false
+        navigationController?.toolbar?.barTintColor = .black
         navigationController?.isToolbarHidden = toolbarHidden
         
         cropView?.image = image
