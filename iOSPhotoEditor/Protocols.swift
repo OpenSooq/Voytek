@@ -14,11 +14,11 @@ import UIKit
  - stickersViewDidDisappear
  */
 
-public protocol PhotoEditorDelegate {
+public protocol PhotoEditorDelegate: class {
     /**
      - Parameter image: edited Image
      */
-    func doneEditing(image: UIImage)
+    func doneEditing(_ controller: PhotoEditorViewController, image: UIImage)
     /**
      StickersViewController did Disappear
      */
@@ -49,6 +49,6 @@ protocol StickersViewControllerDelegate {
 /**
  - didSelectColor
  */
-protocol ColorDelegate {
+protocol ColorDelegate: class {
     func didSelectColor(color: UIColor)
 }
