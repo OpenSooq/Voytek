@@ -105,8 +105,17 @@ open class CropViewController: UIViewController {
             navigationController?.navigationBar.compactAppearance = navbarAppearance
         }
                
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(CropViewController.cancel(_:)))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(CropViewController.done(_:)))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
+            title: NSLocalizedString("CANCEL", comment: ""),
+            style: .plain,
+            target: self, action: #selector(CropViewController.cancel(_:))
+        )
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            title: NSLocalizedString("DONE", comment: ""),
+            style: .plain,
+            target: self, action: #selector(CropViewController.done(_:))
+        )
         
         navigationItem.leftBarButtonItem?.setTitleTextAttributes([ .foregroundColor: UIColor.white], for: .normal)
         navigationItem.rightBarButtonItem?.setTitleTextAttributes([ .foregroundColor: UIColor.white], for: .normal)

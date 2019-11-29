@@ -49,6 +49,7 @@ public final class PhotoEditorViewController: UIViewController {
      Array of Colors that will show while drawing or typing
      */
     public var colors  : [UIColor] = []
+    public var cropToolbarHidden = true
     
     weak public var photoEditorDelegate: PhotoEditorDelegate?
     var colorsCollectionViewDelegate: ColorsCollectionViewDelegate!
@@ -87,6 +88,8 @@ public final class PhotoEditorViewController: UIViewController {
         deleteView.layer.borderWidth = 2.0
         deleteView.layer.borderColor = UIColor.white.cgColor
         deleteView.clipsToBounds = true
+        
+        UIApplication.shared.statusBarStyle = .lightContent
         
         if UIApplication.shared.userInterfaceLayoutDirection == .rightToLeft {
             continueButton.transform = CGAffineTransform(scaleX: -1, y: 1)

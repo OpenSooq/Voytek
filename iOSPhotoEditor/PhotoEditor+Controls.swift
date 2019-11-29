@@ -33,6 +33,7 @@ extension PhotoEditorViewController {
         let controller = CropViewController()
         controller.delegate = self
         controller.image = image
+        controller.toolbarHidden = self.cropToolbarHidden
         let navController = UINavigationController(rootViewController: controller)
         navController.modalPresentationStyle = .fullScreen
         present(navController, animated: true, completion: nil)
