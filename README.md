@@ -1,4 +1,8 @@
-# iOS Photo Editor
+<a href="https://opensooq.com/">
+    <img src="https://opensooqui2.os-cdn.com/os_web/desktop/opensooq-logo.svg" alt="OpenSooq logo" title="OpenSooq" align="right" height="70" />
+</a>
+
+Voytek [iOS Photo Editor]
 
 ## Features
 - [x] Cropping 
@@ -88,9 +92,7 @@ func canceledEditing() {
 
 ## Credits
 
-Written by [Mohamed Hamed](https://github.com/M-Hamed).
-
-Initially sponsored by [![Eventtus](http://assets.eventtus.com/logos/eventtus/standard.png)](http://eventtus.com)
+https://github.com/eventtus/photo-editor
 
 ## License
 
