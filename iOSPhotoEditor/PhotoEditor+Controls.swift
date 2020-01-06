@@ -79,6 +79,10 @@ extension PhotoEditorViewController {
         canvasImageView.isUserInteractionEnabled = true
         hideToolbar(hide: false)
         isDrawing = false
+        if onlyDrawing {
+            let img = self.canvasView.toImage()
+            photoEditorDelegate?.doneEditing(self, image: img)
+        }
     }
     
     //MARK: Bottom Toolbar

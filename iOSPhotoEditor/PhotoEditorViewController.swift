@@ -50,6 +50,7 @@ public final class PhotoEditorViewController: UIViewController {
      */
     public var colors  : [UIColor] = []
     public var cropToolbarHidden = true
+    public var onlyDrawing = false
     
     weak public var photoEditorDelegate: PhotoEditorDelegate?
     var colorsCollectionViewDelegate: ColorsCollectionViewDelegate!
@@ -111,6 +112,18 @@ public final class PhotoEditorViewController: UIViewController {
         configureCollectionView()
         stickersViewController = StickersViewController(nibName: "StickersViewController", bundle: Bundle(for: StickersViewController.self))
         hideControls()
+        
+        if onlyDrawing {
+            isDrawing = true
+            canvasImageView.isUserInteractionEnabled = false
+            doneButton.isHidden = false
+            drawButton.isHidden = true
+            colorPickerView.isHidden = false
+            topToolbar.isHidden = false
+            topGradient.isHidden = true
+            bottomToolbar.isHidden = true
+            bottomGradient.isHidden = true
+        }
     }
     
     func configureCollectionView() {
